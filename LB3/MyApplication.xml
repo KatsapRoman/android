@@ -1,0 +1,7 @@
+<!-- AndroidManifest.xml -->
+<application
+    android:name=".MyApplication"
+    <!-- Інші атрибути та елементи -->
+    >
+    <!-- Інші елементи манифесту -->
+</application>

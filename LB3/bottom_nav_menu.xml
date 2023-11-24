@@ -1,0 +1,8 @@
+<!-- bottom_nav_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/weatherFragment"
+        android:title="Weather"
+        android:icon="@drawable/ic_weather" />
+    <!-- Додайте інші елементи для інших фрагментів -->
+</menu>
