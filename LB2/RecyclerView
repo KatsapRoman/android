@@ -1,0 +1,66 @@
+// ListFragment.java
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListFragment extends Fragment implements ItemClickListener {
+
+    private RecyclerView recyclerView;
+    private ListAdapter adapter;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        // Заповніть список даними
+        List<DataItem> dataItemList = initData();
+        adapter = new ListAdapter(dataItemList, this);
+        recyclerView.setAdapter(adapter);
+
+        return view;
+    }
+
+    @Override
+    public void onItemClick(DataItem item) {
+        // Обробка кліку на елементі списку
+        // Відкрийте другий фрагмент з деталями елемента
+        navigateToDetailFragment(item);
+    }
+
+    private List<DataItem> initData() {
+        // Створіть та поверніть список даних для елементів списку
+        // Замість цього використовуйте ваші власні дані
+        List<DataItem> dataItemList = new ArrayList<>();
+        dataItemList.add(new DataItem("Title 1", "Description 1", R.drawable.image1));
+        dataItemList.add(new DataItem("Title 2", "Description 2", R.drawable.image2));
+        dataItemList.add(new DataItem("Title 3", "Description 3", R.drawable.image3));
+        // Додайте інші елементи до списку
+        return dataItemList;
+    }
+
+    private void navigateToDetailFragment(DataItem item) {
+        // Використовуйте Jetpack Navigation для навігації до другого фрагменту
+        // Передайте дані елемента до другого фрагменту
+        // Ви можете використовувати Bundle для передачі даних
+        DetailFragment detailFragment = new DetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("title", item.getTitle());
+        bundle.putString("description", item.getDescription());
+        bundle.putInt("imageRes", item.getImageRes());
+        detailFragment.setArguments(bundle);
+
+        // Використовуйте NavController для навігації
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        navController.navigate(R.id.action_listFragment_to_detailFragment, bundle);
+    }
+}

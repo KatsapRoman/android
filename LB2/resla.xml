@@ -1,0 +1,23 @@
+<!-- Макет для другого фрагменту з деталями елемента списку -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/detailImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder_image"/>
+
+    <TextView
+        android:id="@+id/detailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailImage"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"/>
+
+    <!-- Додайте інші TextView для інших даних, які ви хочете відобразити -->
+
+</RelativeLayout>
